@@ -2,12 +2,21 @@ import { useFormContext } from "react-hook-form";
 import { Stack, TextField } from "@mui/material";
 import { UserSchema } from "../types/userSchema";
 import RHFAutoComplete from "../../components/RHFAutoComplete";
+import { useEffect } from "react";
 
 const Users = () => {
   const {
     register,
     formState: { errors },
+    watch,
   } = useFormContext<UserSchema>();
+
+  useEffect(() => {
+    const sub = watch((value) => {
+      console.log(value);
+    });
+    return () => sub.unsubscribe();
+  }, [watch]);
 
   return (
     <>

@@ -3,8 +3,10 @@ import { Stack, TextField } from "@mui/material";
 import { UserSchema } from "../types/userSchema";
 import RHFAutoComplete from "../../components/RHFAutoComplete";
 import { useEffect } from "react";
+import { useStates } from "../services/queries";
 
 const Users = () => {
+  const statesQuery = useStates();
   const {
     register,
     formState: { errors },
@@ -37,10 +39,7 @@ const Users = () => {
       <RHFAutoComplete<UserSchema>
         name="states"
         label="States"
-        options={[
-          { id: "1", label: "Texas" },
-          { id: "2", label: "California" },
-        ]}
+        options={statesQuery.data}
       />
     </>
   );

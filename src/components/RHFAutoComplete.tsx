@@ -6,7 +6,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 type Props<T extends FieldValues> = {
   name: Path<T>;
-  options: Option[];
+  options?: Option[];
   label: string;
 };
 
